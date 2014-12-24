@@ -19,8 +19,14 @@
 # >>> 28 (not 28.0)
 # x = 3.5 
 # >>> 4 (not 4.0)
-x = 3.14159
-
 #ENTER CODE BELOW HERE
-print int(x)
+x =27.63
+x= x+0.5
+y=str(x)
+point = y.find('.')
+print y[:point]
+
+
+
+
 
