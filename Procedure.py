@@ -6,9 +6,11 @@ def get_next_target(page):
     end_quate = page.find('"', start_quate+1)
     url = page[start_quate+1 :end_quate]
     return url , end_quate 
-
-url, endpos = get_next_target('Good "Idea" Works')
-if url:
-	print "Here!"
-else:
-	print "Not Here!"
+def print_all_links(page):
+	while True:
+        url, endpos = get_next_target('Good "Idea" Works')
+        if url:
+	        print url
+	        page = page[endpos:]
+        else:
+	        break
