@@ -14,3 +14,7 @@ def print_all_links(page):
 	        page = page[endpos:]
         else:
 	        break
+
+#get_page('http://xkcd.com/353/')??output?
+#print_all_links(get_page('http://xkcd.com/353/'))
+
