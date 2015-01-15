@@ -6,6 +6,7 @@ def get_next_target(page):
     end_quate = page.find('"', start_quate+1)
     url = page[start_quate+1 :end_quate]
     return url , end_quate 
+
 def print_all_links(page):
 	while True:
         url, endpos = get_next_target('Good "Idea" Works')
@@ -14,7 +15,13 @@ def print_all_links(page):
 	        page = page[endpos:]
         else:
 	        break
+def get_page(url):
+	try:
+		import urllib
+		return urllib.urlopen(url).read()
+	except:
+	     return ""	        
 
-#get_page('http://xkcd.com/353/')??output?
+print get_page('http://xkcd.com/353/')
 #print_all_links(get_page('http://xkcd.com/353/'))
 
