@@ -23,5 +23,5 @@ def get_page(url):
 	     return ""	        
 
 print get_page('http://xkcd.com/353/')
-#print_all_links(get_page('http://xkcd.com/353/'))
+print_all_links(get_page('http://xkcd.com/353/'))
 
