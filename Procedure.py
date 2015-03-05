@@ -7,14 +7,23 @@ def get_next_target(page):
     url = page[start_quote + 1:end_quote]
     return url, end_quote
 
-def print_all_links(page):
-	while 1:
-        url, endpos = get_next_target(page)
+def get_all_links(page):
+    links = []
+    while True:
+        url,endpos = get_next_target(page)
         if url:
-	        print url
-	        page = page[endpos:]
+            links.append(url)
+            page = page[endpos:]
         else:
-	        break
+            break
+    return links
+
+def union(p,q):
+    for e in q:
+        if e not in p:
+            p.append(e)    
+
+            
 def get_page(url):
 	try:
 		import urllib
@@ -23,5 +32,15 @@ def get_page(url):
 	     return ""	        
 
 print get_page('http://xkcd.com/353/')
-print_all_links(get_page('http://xkcd.com/353/'))
+get_all_links(get_page('http://xkcd.com/353/'))
 
+def crawl_web(seed):
+    tocrawl = [seed]
+    crawled = []
+    while tocrawl:
+        page = tocrawl.pop()
+        if page not in crawled:
+            union(tocrawl,get_all_links(get_page(page)))
+            crawled.append(page)
+    return crawled
+print crawl_web(get_page("http://www.udacity.com/cs101x/index.html"))    
